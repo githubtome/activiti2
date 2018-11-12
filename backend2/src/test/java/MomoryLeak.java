@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
+import java.util.Set;
 
 /**
  * <pre>
@@ -26,7 +28,13 @@ public class MomoryLeak {
 
     public static void main(String[] args) {
         System.out.println("debug point 1");
-        new MomoryLeak().populateList();
+        Properties properties = System.getProperties();
+        Set set = properties.keySet();
+        for (Object key : set) {
+            System.out.println(key + " [" + properties.getProperty(key.toString()) + "]");
+        }
+        System.out.println("args = [" + System.getProperties() + "]");
+//        new MomoryLeak().populateList();
         System.out.println("debug point 3");
     }
 
